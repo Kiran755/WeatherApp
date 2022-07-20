@@ -104,6 +104,6 @@ font-family: 'Noto Sans', sans-serif;
     background-image:url("./images/warmM.jpg");
   }
   .App.cold{
-    background-image:url("./images/coldM.jpg");
+    background-image:url("./images/coldD.jpg");
   }
 }
