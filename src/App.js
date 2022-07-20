@@ -1,14 +1,15 @@
 import './App.css';
 import {useState} from 'react';
+import {useEffect} from 'react';
 function App() {
 const api = {
-  base:"http://api.openweathermap.org/data/2.5/",
+  base:"https://api.openweathermap.org/data/2.5/",
   key:"3b79a35a662d1f2a68a6797865ae06e6"
 }
 
 const [query,setQuery] = useState("");
 const [weather,setWeather] = useState({});
-
+const input = document.getElementById("input");
 
 const fetchData = (evt)=>{
   if(evt.key==="Enter")
@@ -20,6 +21,7 @@ const fetchData = (evt)=>{
       console.log(result);
     });
   }
+  console.log(evt.key);
 }
   const datebuilder = (d)=>{
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -37,10 +39,10 @@ const fetchData = (evt)=>{
     <div className={typeof weather.main!="undefined"?(weather.main.temp>18)?"App warm":"App cold":"App"}>
         <div className='container'>
             <div className='search-div'>
-                <input type="text" placeholder='Enter City name'
+                <input type="text" placeholder='Enter City name' id="input"
                 onChange={(e)=>{setQuery(e.target.value)}}
                 value={query}
-                onKeyPress={fetchData}
+                onKeyDown={fetchData}
                 />
             </div>
             {(typeof weather.main != "undefined")?(
